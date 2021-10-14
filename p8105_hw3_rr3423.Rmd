@@ -13,8 +13,21 @@ library(p8105.datasets)
 
 ## PROBLEM 1
 
+### Loading Instacart dataset from p8105.datasets
+
 ```{r load_instacart}
-# Loading Instacart dataset from p8105.datasets
 data("instacart")
+
+instacart_df = instacart
 ```
+
+### Dataset exploration 
+
+```{r instacart_data_exploration}
+rows_instacart = instacart_df %>% nrow()
+cols_instacart = instacart_df %>% ncol()
+names_instacart = instacart_df %>% names()
+```
+
+The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. 
 
