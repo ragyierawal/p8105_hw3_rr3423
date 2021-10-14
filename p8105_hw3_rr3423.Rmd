@@ -18,7 +18,9 @@ library(p8105.datasets)
 ```{r load_instacart}
 data("instacart")
 
-instacart_df = instacart
+instacart_df = 
+  instacart %>% 
+  janitor::clean_names()
 ```
 
 ### Dataset exploration 
