@@ -32,14 +32,12 @@ scale_fill_discrete = scale_fill_viridis_d
 ### Loading Instacart dataset from p8105.datasets 
 
 ```{r load_instacart}
-# loading dataset
 data("instacart")
 ```
 
-### Cleaning variable names in loading Instacart datacart 
+### Cleaning variable names in Instacart datacart 
 
 ```{r cleaning_instacart}
-# cleaning variable names 
 instacart_df = 
   instacart %>% 
   janitor::clean_names()
@@ -60,12 +58,28 @@ The number of **rows** in the instacart dataset are **`r rows_instacart`**. The 
 How many aisles are there, and which aisles are the most items ordered from? 
 
 ```{r aisles_instacart}
-aisle_analyze = 
+analyze_aisle = 
   instacart_df %>% 
   group_by(aisle) %>% 
-  summarize(n_obs = n()) %>% 
-  arrange(desc(n_obs))
+  summarize(item_count = n()) %>% 
+  arrange(desc(item_count))
 ```
 
 There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
+
+### Plot: number of items ordered in each aisle (more than 1000 items)
+
+```{r aisles_plot_instacart}
+plot_aisle = 
+  instacart_df %>% 
+  group_by(aisle) %>% 
+  summarize(item_count = n()) %>% 
+  filter(item_count > 10000) %>% 
+  ggplot(aes(x = reorder(aisle, item_count), y = item_count)) +
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+plot_aisle
+```
+
 
