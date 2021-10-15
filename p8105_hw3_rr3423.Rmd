@@ -123,4 +123,13 @@ knitr::kable(table_mean_hour, digits = 1)
 ```
 
 
+## PROBLEM 2 
+
+### Loading BRFSS dataset from p8105.datasets 
+
+```{r load_BRFSS}
+data("brfss_smart2010")
+```
+
+
 
