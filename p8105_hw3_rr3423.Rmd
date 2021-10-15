@@ -58,8 +58,7 @@ The number of **rows** in the instacart dataset are **`r rows_instacart`**. The 
 How many aisles are there, and which aisles are the most items ordered from? 
 
 ```{r aisles_instacart}
-analyze_aisle = 
-  instacart_df %>% 
+instacart_df %>% 
   group_by(aisle) %>% 
   summarize(item_count = n()) %>% 
   arrange(desc(item_count))
@@ -84,9 +83,23 @@ plot_aisle =
     y = "Items ordered",
     caption = "Limited to aisles with >10000 items"
   ) + 
-  theme(axis.text.y = element_text(size = 6))
+  theme(axis.text.y = element_text(size = 7))
 
 plot_aisle
 ```
 
 This plot also shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
+
+### Table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
+
+```{r popular_items_table, message = FALSE, warning = FALSE}
+table_popular_items = 
+  instacart_df %>% 
+  filter(aisle %in% c("baking ingredients", "dog food care", "packaged vegetables fruits")) %>% 
+  group_by(aisle, product_name) %>% 
+  summarize(item_count = n()) %>% 
+  top_n(3, wt = item_count) %>% 
+  arrange(desc(item_count), .by_group = TRUE) %>% 
+  knitr::kable()
+```
+
