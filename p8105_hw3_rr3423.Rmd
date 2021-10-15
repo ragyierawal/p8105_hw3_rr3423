@@ -58,7 +58,8 @@ The number of **rows** in the instacart dataset are **`r rows_instacart`**. The 
 How many aisles are there, and which aisles are the most items ordered from? 
 
 ```{r aisles_instacart}
-instacart_df %>% 
+analyze_aisles = 
+  instacart_df %>% 
   group_by(aisle) %>% 
   summarize(item_count = n()) %>% 
   arrange(desc(item_count))
@@ -141,6 +142,19 @@ brfss_df =
   filter(response %in% c("Excellent", "Very good", "Good", "Fair", "Poor")) %>% 
   mutate(response = forcats::fct_relevel(response, "Excellent", "Very good", "Good", "Fair", "Poor"))
 ```
+
+### In 2002, which states were observed at 7 or more locations? 
+
+```{r 2002_states_observed}
+states_2002 = 
+  brfss_df %>% 
+  filter(year == "2002") %>% 
+  group_by(locationabbr) %>% 
+  summarize(count = n_distinct(locationdesc)) %>% 
+  filter(count >= 7)
+```
+
+In 2002, the following states were observed at 7 or more locations: CT, FL, MA, NC, NJ, PA. 
 
 
 
