@@ -8,6 +8,22 @@ output: github_document
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(p8105.datasets)
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "90%"
+)
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
 ```
 
 
@@ -25,11 +41,16 @@ instacart_df =
 
 ### Dataset exploration 
 
-```{r instacart_data_exploration}
+```{r data_exploration_instacart}
 rows_instacart = instacart_df %>% nrow()
 cols_instacart = instacart_df %>% ncol()
 names_instacart = instacart_df %>% names()
 ```
 
 The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. 
+
+### Aisles 
+
+How many aisles are there, and which aisles are the most items ordered from? 
+
 
