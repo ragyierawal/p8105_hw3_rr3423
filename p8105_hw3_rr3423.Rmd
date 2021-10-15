@@ -88,7 +88,7 @@ plot_aisle =
 plot_aisle
 ```
 
-This plot also shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
+This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
 
 ### Table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
 
@@ -105,4 +105,22 @@ knitr::kable(table_popular_items)
 ```
 
 This table shows that the top three popular items in the "baking ingredients" aisle are: Light Brown Sugar with 499 items ordered, Pure Baking Soda with 387 times ordered, and Cane Sugar with 336 times ordered. The top three popular items in the "dog food care" aisle are: Snack Sticks Chicken & Rice Recipe Dog Treats with 30 times ordered, Organix Chicken & Brown Rice Recipe with 28 times ordered, and Small Dog Biscuits with 26 times ordered. The top three popular items in the "packaged vegetables fruits" aisle are: Organic Baby Spinach with 9784 times ordered, Organic Raspberries with 5546 times ordered, and Organic Blueberries with 4966 times ordered. 
+
+### Table of mean hour of day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week 
+
+```{r mean_hour_table, message = FALSE, warning = FALSE}
+table_mean_hour = 
+  instacart_df %>% 
+  filter(product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>% 
+  group_by(product_name, order_dow) %>% 
+  summarize(mean_hour = mean(order_hour_of_day)) %>% 
+  pivot_wider(
+    names_from = order_dow, 
+    values_from = mean_hour
+  )
+  
+knitr::kable(table_mean_hour, digits = 1)
+```
+
+
 
