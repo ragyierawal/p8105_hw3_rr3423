@@ -46,9 +46,17 @@ instacart_df =
 ### Dataset exploration 
 
 ```{r data_exploration_instacart}
-rows_instacart = instacart_df %>% nrow()
-cols_instacart = instacart_df %>% ncol()
-names_instacart = instacart_df %>% names()
+rows_instacart = 
+  instacart_df %>% 
+  nrow() 
+
+cols_instacart =
+  instacart_df %>%
+  ncol()
+
+names_instacart =
+  instacart_df %>%
+  names()
 ```
 
 The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. 
@@ -58,8 +66,7 @@ The number of **rows** in the instacart dataset are **`r rows_instacart`**. The 
 How many aisles are there, and which aisles are the most items ordered from? 
 
 ```{r aisles_instacart}
-analyze_aisles = 
-  instacart_df %>% 
+instacart_df %>% 
   group_by(aisle) %>% 
   summarize(item_count = n()) %>% 
   arrange(desc(item_count))
@@ -67,11 +74,10 @@ analyze_aisles =
 
 There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
 
-### Plot of the number of items ordered in each aisle (more than 10000 items)
+### Constructing a plot of the number of items ordered in each aisle (more than 10000 items)
 
 ```{r aisles_plot_instacart}
-plot_aisle = 
-  instacart_df %>% 
+instacart_df %>% 
   group_by(aisle) %>% 
   summarize(item_count = n()) %>% 
   filter(item_count > 10000) %>% 
@@ -85,42 +91,36 @@ plot_aisle =
     caption = "Limited to aisles with >10000 items"
   ) + 
   theme(axis.text.y = element_text(size = 7))
-
-plot_aisle
 ```
 
 This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
 
-### Table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
+### Constructing a table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
 
 ```{r popular_items_table, message = FALSE, warning = FALSE}
-table_popular_items = 
-  instacart_df %>% 
+instacart_df %>% 
   filter(aisle %in% c("baking ingredients", "dog food care", "packaged vegetables fruits")) %>% 
   group_by(aisle, product_name) %>% 
   summarize(item_count = n()) %>% 
   filter(min_rank(desc(item_count)) < 4) %>% 
-  arrange(desc(item_count), .by_group = TRUE) 
-  
-knitr::kable(table_popular_items)
+  arrange(desc(item_count), .by_group = TRUE) %>% 
+  knitr::kable()
 ```
 
 This table shows that the top three popular items in the "baking ingredients" aisle are: Light Brown Sugar with 499 items ordered, Pure Baking Soda with 387 times ordered, and Cane Sugar with 336 times ordered. The top three popular items in the "dog food care" aisle are: Snack Sticks Chicken & Rice Recipe Dog Treats with 30 times ordered, Organix Chicken & Brown Rice Recipe with 28 times ordered, and Small Dog Biscuits with 26 times ordered. The top three popular items in the "packaged vegetables fruits" aisle are: Organic Baby Spinach with 9784 times ordered, Organic Raspberries with 5546 times ordered, and Organic Blueberries with 4966 times ordered. 
 
-### Table of mean hour of day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week 
+### Constructing a table of mean hour of day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week 
 
 ```{r mean_hour_table, message = FALSE, warning = FALSE}
-table_mean_hour = 
-  instacart_df %>% 
+instacart_df %>% 
   filter(product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>% 
   group_by(product_name, order_dow) %>% 
-  summarize(mean_hour = mean(order_hour_of_day)) %>% 
+  summarize(mean_hour = mean(order_hour_of_day, na.rm = TRUE)) %>% 
   pivot_wider(
     names_from = order_dow, 
     values_from = mean_hour
-  )
-  
-knitr::kable(table_mean_hour, digits = 1)
+  ) %>% 
+  knitr::kable(digits = 1)
 ```
 
 
@@ -140,18 +140,17 @@ brfss_df =
   janitor::clean_names() %>%
   filter(topic %in% c("Overall Health")) %>% 
   filter(response %in% c("Excellent", "Very good", "Good", "Fair", "Poor")) %>% 
-  mutate(response = forcats::fct_relevel(response, "Excellent", "Very good", "Good", "Fair", "Poor"))
+  mutate(response = forcats::fct_relevel(response, "Poor", "Fair", "Good", "Very good", "Excellent"))
 ```
 
 ### In 2002, which states were observed at 7 or more locations? 
 
 ```{r 2002_states_observed}
-states_2002 = 
-  brfss_df %>% 
+brfss_df %>% 
   filter(year == "2002") %>% 
   group_by(locationabbr) %>% 
-  summarize(locations_count = n_distinct(locationdesc)) %>% 
-  filter(locations_count >= 7)
+  summarize(location_count = n_distinct(locationdesc)) %>% 
+  filter(location_count >= 7)
 ```
 
 In 2002, the following six states were observed at 7 or more locations: CT, FL, MA, NC, NJ, PA. 
@@ -159,13 +158,32 @@ In 2002, the following six states were observed at 7 or more locations: CT, FL, 
 ### In 2010, which states were observed at 7 or more locations? 
 
 ```{r 2010_states_observed}
-states_2010 = 
-  brfss_df %>% 
+brfss_df %>% 
   filter(year == "2010") %>% 
   group_by(locationabbr) %>% 
-  summarize(locations_count = n_distinct(locationdesc)) %>% 
-  filter(locations_count >= 7)
+  summarize(location_count = n_distinct(locationdesc)) %>% 
+  filter(location_count >= 7)
 ```
 
 In 2010, the following fourteen states were observed at 7 or more locations: CA, CO, FL, MA, MD, NC, NE, NJ, NY, OH, PA, SC, TX, WA. 
+
+### Constructing a dataset limited to Excellent responses which contains year, state, and a variable that averages the data_value across locations within a state.
+
+```{r constructing_dataset}
+# constructing dataset and making spaghetti plot
+brfss_df %>% 
+  filter(response %in% "Excellent") %>% 
+  group_by(year, locationabbr) %>% 
+  summarize(mean_data_value = mean(data_value, na.rm = TRUE)) %>% 
+  ggplot(aes(x = year, y = mean_data_value, color = locationabbr)) + 
+  geom_line(aes(group = locationabbr)) +
+  labs(
+    title = "Average data value over time across locations within a state",
+    x = "Year",
+    y = "Average data value"
+  ) + 
+  theme(legend.position = "right")
+```
+
+
 
