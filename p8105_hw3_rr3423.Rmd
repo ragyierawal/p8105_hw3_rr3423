@@ -131,5 +131,15 @@ knitr::kable(table_mean_hour, digits = 1)
 data("brfss_smart2010")
 ```
 
+### Data cleaning for BRFSS dataset 
+
+```{r data_cleaning_BRFSS}
+brfss_df = 
+  brfss_smart2010 %>% 
+  janitor::clean_names() %>% 
+  filter(topic %in% c("Overall Health")) %>% 
+  mutate(response = factor(response, levels = c("Poor", "Fair", "Good", "Very good", "Excellent")))
+```
+
 
 
