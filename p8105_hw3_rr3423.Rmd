@@ -104,4 +104,5 @@ table_popular_items =
 knitr::kable(table_popular_items)
 ```
 
+This table shows that the top three popular items in the "baking ingredients" aisle are: Light Brown Sugar with 499 items ordered, Pure Baking Soda with 387 times ordered, and Cane Sugar with 336 times ordered. The top three popular items in the "dog food care" aisle are: Snack Sticks Chicken & Rice Recipe Dog Treats with 30 times ordered, Organix Chicken & Brown Rice Recipe with 28 times ordered, and Small Dog Biscuits with 26 times ordered. The top three popular items in the "packaged vegetables fruits" aisle are: Organic Baby Spinach with 9784 times ordered, Organic Raspberries with 5546 times ordered, and Organic Blueberries with 4966 times ordered. 
 
