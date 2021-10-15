@@ -67,7 +67,7 @@ analyze_aisle =
 
 There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
 
-### Plot: number of items ordered in each aisle (more than 1000 items)
+### Plot of the number of items ordered in each aisle (more than 10000 items)
 
 ```{r aisles_plot_instacart}
 plot_aisle = 
@@ -77,9 +77,16 @@ plot_aisle =
   filter(item_count > 10000) %>% 
   ggplot(aes(x = reorder(aisle, item_count), y = item_count)) +
   geom_bar(stat = "identity") +
-  coord_flip()
+  coord_flip() + 
+  labs(
+    title = "Number of items ordered in each aisle",
+    x = "Aisle name",
+    y = "Items ordered",
+    caption = "Limited to aisles with >10000 items"
+  ) + 
+  theme(axis.text.y = element_text(size = 6))
 
 plot_aisle
 ```
 
-
+This plot also shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
