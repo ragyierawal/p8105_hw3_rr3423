@@ -185,5 +185,15 @@ brfss_df %>%
   theme(legend.position = "right")
 ```
 
+### Making a two-panel plot showing the distribution of data_value for responses among locations in NY State for the years 2006 and 2010 
+
+```{r}
+brfss_df %>% 
+  filter(
+    year %in% c("2006", "2010"),
+    locationabbr %in% c("NY")
+  )
+```
+
 
 
