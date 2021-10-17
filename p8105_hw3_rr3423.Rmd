@@ -208,7 +208,12 @@ brfss_df %>%
 accel_df = 
   read_csv("data/accel_data.csv") %>% 
   janitor::clean_names() %>% 
-  mutate(weekdat_vs_weekend = case_when(day == "Monday" ~ "weekday",
+  pivot_longer(
+    activity_1:activity_1440,
+    names_to = "activity",
+    values_to = "accelometer_data"
+  ) %>% 
+  mutate(weekday_vs_weekend = case_when(day == "Monday" ~ "weekday",
                                         day == "Tuesday" ~ "weekday",
                                         day == "Wednesday" ~ "weekday",
                                         day == "Thursday" ~ "weekday", 
