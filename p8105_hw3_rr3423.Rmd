@@ -188,7 +188,7 @@ brfss_df %>%
 
 ### Making a two-panel plot showing the distribution of data_value for responses among locations in NY State for the years 2006 and 2010 
 
-```{r}
+```{r two_panel_plot}
 brfss_df %>% 
   filter(
     year %in% c("2006", "2010"),
@@ -197,6 +197,16 @@ brfss_df %>%
   ggplot(aes(x = data_value, y = response)) + 
   geom_density_ridges(scale = 0.85) + 
   facet_grid(.~ year)
+```
+
+
+## PROBLEM 3 
+
+### Loading accelerometer csv dataset 
+
+```{r loading_accel_data}
+accel_df = 
+  read_csv("data/accel_data.csv")
 ```
 
 
