@@ -211,7 +211,7 @@ accel_df =
   pivot_longer(
     activity_1:activity_1440,
     names_to = "activity",
-    values_to = "accelometer_data"
+    values_to = "accelerometer_data"
   ) %>% 
   mutate(weekday_vs_weekend = case_when(day == "Monday" ~ "weekday",
                                         day == "Tuesday" ~ "weekday",
@@ -219,7 +219,8 @@ accel_df =
                                         day == "Thursday" ~ "weekday", 
                                         day == "Friday" ~ "weekday",
                                         day == "Saturday" ~ "weekend",
-                                        day == "Sunday" ~ "weekend"))
+                                        day == "Sunday" ~ "weekend")) %>% 
+  select(week, day_id, day, weekday_vs_weekend, everything())
 ```
 
 
