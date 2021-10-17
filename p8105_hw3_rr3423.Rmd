@@ -206,7 +206,8 @@ brfss_df %>%
 
 ```{r loading_accel_data}
 accel_df = 
-  read_csv("data/accel_data.csv")
+  read_csv("data/accel_data.csv") %>% 
+  janitor::clean_names()
 ```
 
 
