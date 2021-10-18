@@ -85,7 +85,7 @@ instacart %>%
   theme(axis.text.y = element_text(size = 7))
 ```
 
-This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". The "fresh vegetables" aisle has 150,609 items ordered, the "fresh fruits" aisle has 150,473 items ordered, and the "packaged vegetables fruits" aisle has 78493 items ordered.  
+This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". The "fresh vegetables" aisle has 150609 items ordered, the "fresh fruits" aisle has 150473 items ordered, and the "packaged vegetables fruits" aisle has 78493 items ordered.  
 
 ### Constructing a table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
 
@@ -174,9 +174,9 @@ brfss_df %>%
 
 In 2010, the following fourteen states were observed at 7 or more locations: CA, CO, FL, MA, MD, NC, NE, NJ, NY, OH, PA, SC, TX, WA. 
 
-### Constructing a dataset limited to Excellent responses which contains year, state, and a variable that averages the data_value across locations within a state.
+### Constructing a dataset and spaghetti plot limited to Excellent responses which contains year, state, and a variable that averages the data_value across locations within a state.
 
-```{r constructing_dataset}
+```{r constructing_dataset, message = FALSE, warning = FALSE}
 # constructing dataset and making spaghetti plot
 brfss_df %>% 
   filter(response %in% "Excellent") %>% 
@@ -187,7 +187,8 @@ brfss_df %>%
   labs(
     title = "Average data value over time across locations within a state",
     x = "Year",
-    y = "Average data value"
+    y = "Average data value",
+    caption = "Data from the BRFSS dataset"
   ) + 
   theme(legend.position = "right")
 ```
