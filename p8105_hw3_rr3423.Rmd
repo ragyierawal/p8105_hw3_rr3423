@@ -196,7 +196,7 @@ brfss_df %>%
   ) %>% 
   ggplot(aes(x = data_value, y = response)) + 
   geom_density_ridges(scale = 0.85) + 
-  facet_grid(.~ year)
+  facet_grid(year ~ response)
 ```
 
 
@@ -211,7 +211,7 @@ accel_df =
   pivot_longer(
     activity_1:activity_1440,
     names_to = "activity",
-    values_to = "accelerometer_data"
+    values_to = "activity_count"
   ) %>% 
   mutate(weekday_vs_weekend = case_when(day == "Monday" ~ "weekday",
                                         day == "Tuesday" ~ "weekday",
