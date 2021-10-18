@@ -282,7 +282,7 @@ accel_df %>%
     caption = "**Table 3: Total activity variable for each day**")
 ```
 
-For this problem, show total minutes for each of the separate 35 days 
+Based on this table, it appears that the total activity in minutes is **lowest on Saturdays** compared to the rest of the week. The total activity in minutes is **highest on Fridays** compared to the rest of the week. 
 
 ### Creating a single-panel plot showing the 24-hour activity time course in minutes for each day 
 
