@@ -257,9 +257,9 @@ The **key variables** in this tidied dataset are **`r variables_accel`**. The **
 ### Creating a table showing total activity over each day
 
 ```{r minutes_activity_table}
-accel_df %>%
-  group_by(day) %>% 
-  summarize(total_activity = sum(activity_count)) %>% 
+accel_df %>% 
+  group_by(day_id, day) %>% 
+  summarize(total_activity = sum(activity_count, na.rm = TRUE)) %>% 
   knitr::kable(digits = 1)
 ```
 
