@@ -302,3 +302,4 @@ accel_df %>%
     breaks = c(0, 240, 480, 720, 960, 1200, 1440))
 ```
 
+Based on this single-panel graph, it appears that the activity count is higher later in the day, since the activity count is higher in the later minutes of the day (around 1200 minutes), particularly during the weekdays (Monday - Friday). On the weekends (Saturday and Sunday), it appears that the activity count is higher in the middle of the day (aroun 720 minutes). 
