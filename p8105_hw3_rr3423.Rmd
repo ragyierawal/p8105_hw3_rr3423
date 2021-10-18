@@ -51,9 +51,9 @@ names_instacart =
   names()
 ```
 
-The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. 
+The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. The dataset contains 1,384,617 observations, and each row in the dataset represents a product from an instacart order. The dataset gives information on the order, such as providing an order id, the order day of the week, the order hour of the day, the product name, and the aisle and department names. 
 
-**give illustrative examples = explain key variables in the dataset, don't need to make plots or variables, only need to write in paragraph format  
+ 
 
 ### Aisles 
 
