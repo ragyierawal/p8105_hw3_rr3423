@@ -267,6 +267,18 @@ accel_df %>%
 
 ```{r activity_time_plot}
 accel_df %>% 
-  mutate(activity_count = )
+  group_by(day, activity_minute) %>% 
+  ggplot(aes(x = activity_minute, y = activity_count, color = day)) + 
+  geom_point(alpha = 0.5) + 
+  labs(
+    title = "24-hour activity time course for each day",
+    x = "Hour of the day (hr)",
+    y = "Activity count",
+    caption = "Data from Columbia University Medical Center"
+  ) + 
+  theme(legend.position = "right") + 
+  scale_x_continuous(
+    breaks = c(0, 240, 480, 720, 960, 1200, 1440),
+    labels = c("0", "4", "8", "12", "16", "20", "24"))
 ```
 
