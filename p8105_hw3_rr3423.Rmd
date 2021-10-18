@@ -204,7 +204,7 @@ brfss_df %>%
     locationabbr %in% c("NY")
   ) %>% 
   ggplot(aes(x = data_value, y = response, color = locationdesc)) + 
-  geom_point() +
+  geom_point() + 
   facet_grid(. ~ year) + 
   labs(
     title = "Data value distribution for responses in NY in 2006 and 2010",
@@ -213,6 +213,8 @@ brfss_df %>%
     caption = "Data from the BRFSS dataset"
   )
 ```
+
+** COMMENT ON THE RESULTS FOR THIS GRAPH** 
 
 
 ## PROBLEM 3 
@@ -269,13 +271,15 @@ This tidied accelerometer dataset represents five weeks of accelerometer data fo
 
 The **key variables** in this tidied dataset are **`r variables_accel`**. The **dimensions** of this tidied dataset are **`r dim_accel`**. The **number of rows** in this tidied dataset are **`r rows_accel`**. The **number of columns** in this tidied dataset are **`r cols_accel`**. 
 
-### Creating a table showing total activity over each day
+### Creating a table aggregated across minutes showing total activity over each day
 
 ```{r minutes_activity_table}
 accel_df %>% 
   group_by(day) %>% 
   summarize(total_activity = sum(activity_count, na.rm = TRUE)) %>% 
-  knitr::kable(digits = 1)
+  knitr::kable(
+    digits = 1,
+    caption = "**Table 3: Total activity variable for each day**")
 ```
 
 For this problem, show total minutes for each of the separate 35 days 
