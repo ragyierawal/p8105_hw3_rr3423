@@ -62,6 +62,8 @@ names_instacart =
 
 The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. 
 
+**give illustrative examples = explain key variables in the dataset, don't need to make plots or variables, only need to write in paragraph format  
+
 ### Aisles 
 
 How many aisles are there, and which aisles are the most items ordered from? 
@@ -258,12 +260,14 @@ The **key variables** in this tidied dataset are **`r variables_accel`**. The **
 
 ```{r minutes_activity_table}
 accel_df %>% 
-  group_by(day_id) %>% 
+  group_by(day) %>% 
   summarize(total_activity = sum(activity_count, na.rm = TRUE)) %>% 
   knitr::kable(digits = 1)
 ```
 
-### Creating a single-panel plot showing the 24-hour activity time courses for each day 
+For this problem, show total minutes for each of the separate 35 days 
+
+### Creating a single-panel plot showing the 24-hour activity time course in minutes for each day 
 
 ```{r activity_time_plot}
 accel_df %>% 
@@ -272,13 +276,12 @@ accel_df %>%
   geom_point(alpha = 0.5) + 
   labs(
     title = "24-hour activity time course for each day",
-    x = "Hour of the day (hr)",
+    x = "Minutes in the day (hr)",
     y = "Activity count",
     caption = "Data from Columbia University Medical Center"
   ) + 
   theme(legend.position = "right") + 
   scale_x_continuous(
-    breaks = c(0, 240, 480, 720, 960, 1200, 1440),
-    labels = c("0", "4", "8", "12", "16", "20", "24"))
+    breaks = c(0, 240, 480, 720, 960, 1200, 1440))
 ```
 
