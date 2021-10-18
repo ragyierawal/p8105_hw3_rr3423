@@ -53,8 +53,6 @@ names_instacart =
 
 The number of **rows** in the instacart dataset are **`r rows_instacart`**. The number of **columns** in the instacart dataset are **`r cols_instacart`**. The **key variables** in the instacart dataset are **`r names_instacart`**. The dataset contains 1,384,617 observations, and each row in the dataset represents a product from an instacart order. The dataset gives information on the order, such as providing an order id, the order day of the week, the order hour of the day, the product name, and the aisle and department names. 
 
- 
-
 ### Aisles 
 
 How many aisles are there, and which aisles are the most items ordered from? 
@@ -66,7 +64,7 @@ instacart %>%
   arrange(desc(item_count))
 ```
 
-There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
+There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
 
 ### Constructing a plot of the number of items ordered in each aisle (more than 10000 items)
 
