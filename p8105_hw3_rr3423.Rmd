@@ -77,10 +77,10 @@ instacart %>%
   geom_bar(stat = "identity") +
   coord_flip() + 
   labs(
-    title = "Number of items ordered in each aisle",
+    title = "Number of items ordered in each aisle (>10000 items)",
     x = "Aisle name",
     y = "Items ordered",
-    caption = "Limited to aisles with >10000 items"
+    caption = "Data from the instacart dataset"
   ) + 
   theme(axis.text.y = element_text(size = 7))
 ```
@@ -96,7 +96,7 @@ instacart %>%
   summarize(item_count = n()) %>% 
   filter(min_rank(desc(item_count)) < 4) %>% 
   arrange(desc(item_count), .by_group = TRUE) %>% 
-  knitr::kable()
+  knitr::kable(caption = "**Table 1: Three most popular items in specific aisles**")
 ```
 
 This table shows that the top three popular items in the "baking ingredients" aisle are: Light Brown Sugar with 499 items ordered, Pure Baking Soda with 387 times ordered, and Cane Sugar with 336 times ordered. The top three popular items in the "dog food care" aisle are: Snack Sticks Chicken & Rice Recipe Dog Treats with 30 times ordered, Organix Chicken & Brown Rice Recipe with 28 times ordered, and Small Dog Biscuits with 26 times ordered. The top three popular items in the "packaged vegetables fruits" aisle are: Organic Baby Spinach with 9784 times ordered, Organic Raspberries with 5546 times ordered, and Organic Blueberries with 4966 times ordered. 
