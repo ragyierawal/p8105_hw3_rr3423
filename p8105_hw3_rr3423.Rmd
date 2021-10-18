@@ -230,6 +230,30 @@ accel_df =
   select(week, day_id, day, weekday_vs_weekend, everything())
 ```
 
+### Describing the accelerometer dataset 
+
+```{r}
+variables_accel = 
+  accel_df %>% 
+  names()
+
+dim_accel = 
+  accel_df %>% 
+  dim()
+
+rows_accel = 
+  accel_df %>% 
+  nrow()
+
+cols_accel = 
+  accel_df %>% 
+  ncol()
+```
+
+This tidied accelerometer dataset represents five weeks of accelerometer data for one individual. This dataset contains a variable for the activity minute, which represents each minute of a 24-hour day starting at midnight for the activity count data. This tidied dataset also contains a weekday vs. weekend variable which determines if the day of the week being represented is a weekday or a weekend day. 
+
+The **key variables** in this tidied dataset are **`r variables_accel`**. The **dimensions** of this tidied dataset are **`r dim_accel`**. The **number of rows** in this tidied dataset are **`r rows_accel`**. The **number of columns** in this tidied dataset are **`r cols_accel`**. 
+
 ### Creating a table showing total activity over each day
 
 ```{r minutes_activity_table}
