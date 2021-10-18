@@ -66,7 +66,7 @@ instacart %>%
 
 There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
 
-### Constructing a plot of the number of items ordered in each aisle (more than 10000 items)
+### Constructing a plot of the number of items ordered in each aisle (more than 10000 items ordered)
 
 ```{r aisles_plot_instacart}
 instacart %>% 
@@ -85,7 +85,7 @@ instacart %>%
   theme(axis.text.y = element_text(size = 7))
 ```
 
-This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". 
+This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". The "fresh vegetables" aisle has 150,609 items ordered, the "fresh fruits" aisle has 150,473 items ordered, and the "packaged vegetables fruits" aisle has 78493 items ordered.  
 
 ### Constructing a table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
 
