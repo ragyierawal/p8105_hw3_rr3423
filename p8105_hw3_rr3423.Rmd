@@ -223,5 +223,12 @@ accel_df =
   select(week, day_id, day, weekday_vs_weekend, everything())
 ```
 
+### Creating a table showing total activity over each day
 
+```{r minutes_activity_table}
+accel_df %>% 
+  group_by(day) %>% 
+  summarize(total_activity = sum(activity_count)) %>% 
+  knitr::kable(digits = 1)
+```
 
