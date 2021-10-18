@@ -203,11 +203,16 @@ brfss_df %>%
     year %in% c("2006", "2010"),
     locationabbr %in% c("NY")
   ) %>% 
-  ggplot(aes(x = data_value, y = response)) + 
-  facet_grid(year ~ response)
+  ggplot(aes(x = data_value, y = response, color = locationdesc)) + 
+  geom_point() +
+  facet_grid(. ~ year) + 
+  labs(
+    title = "Data value distribution for responses in NY in 2006 and 2010",
+    x = "Data value",
+    y = "Response",
+    caption = "Data from the BRFSS dataset"
+  )
 ```
-
-* you should put specific locations 
 
 
 ## PROBLEM 3 
