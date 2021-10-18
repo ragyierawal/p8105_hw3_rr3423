@@ -8,7 +8,6 @@ output: github_document
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(p8105.datasets)
-library(ggridges)
 
 knitr::opts_chunk$set(
   fig.width = 6,
@@ -36,27 +35,19 @@ scale_fill_discrete = scale_fill_viridis_d
 data("instacart")
 ```
 
-### Cleaning variable names in Instacart datacart 
-
-```{r cleaning_instacart}
-instacart_df = 
-  instacart %>% 
-  janitor::clean_names()
-```
-
 ### Dataset exploration 
 
 ```{r data_exploration_instacart}
 rows_instacart = 
-  instacart_df %>% 
+  instacart %>% 
   nrow() 
 
 cols_instacart =
-  instacart_df %>%
+  instacart %>%
   ncol()
 
 names_instacart =
-  instacart_df %>%
+  instacart %>%
   names()
 ```
 
@@ -69,7 +60,7 @@ The number of **rows** in the instacart dataset are **`r rows_instacart`**. The 
 How many aisles are there, and which aisles are the most items ordered from? 
 
 ```{r aisles_instacart}
-instacart_df %>% 
+instacart %>% 
   group_by(aisle) %>% 
   summarize(item_count = n()) %>% 
   arrange(desc(item_count))
@@ -80,7 +71,7 @@ There are 134 aisles in the instacart dataset. The top 3 aisles that the most it
 ### Constructing a plot of the number of items ordered in each aisle (more than 10000 items)
 
 ```{r aisles_plot_instacart}
-instacart_df %>% 
+instacart %>% 
   group_by(aisle) %>% 
   summarize(item_count = n()) %>% 
   filter(item_count > 10000) %>% 
@@ -101,7 +92,7 @@ This plot shows that the top 3 aisles that the most items are ordered from in de
 ### Constructing a table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
 
 ```{r popular_items_table, message = FALSE, warning = FALSE}
-instacart_df %>% 
+instacart %>% 
   filter(aisle %in% c("baking ingredients", "dog food care", "packaged vegetables fruits")) %>% 
   group_by(aisle, product_name) %>% 
   summarize(item_count = n()) %>% 
@@ -115,7 +106,7 @@ This table shows that the top three popular items in the "baking ingredients" ai
 ### Constructing a table of mean hour of day at which Pink Lady Apples and Coffee Ice Cream are ordered on each day of the week 
 
 ```{r mean_hour_table, message = FALSE, warning = FALSE}
-instacart_df %>% 
+instacart %>% 
   filter(product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>% 
   group_by(product_name, order_dow) %>% 
   summarize(mean_hour = mean(order_hour_of_day, na.rm = TRUE)) %>% 
@@ -197,9 +188,10 @@ brfss_df %>%
     locationabbr %in% c("NY")
   ) %>% 
   ggplot(aes(x = data_value, y = response)) + 
-  geom_density_ridges(scale = 0.85) + 
   facet_grid(year ~ response)
 ```
+
+* you should put specific locations 
 
 
 ## PROBLEM 3 
