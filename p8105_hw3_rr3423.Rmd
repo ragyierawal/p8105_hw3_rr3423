@@ -195,7 +195,7 @@ brfss_df %>%
 
 Looking at this spaghetti plot, it seems that the average data_value across locations within a state seem to fluctuate from year to year in many states between 2002 and 2010. There is a lot of variability in this graph from year to year. 
 
-### Making a two-panel plot showing the distribution of data_value for responses among locations in NY State for the years 2006 and 2010 
+### Making a two-panel plot showing the distribution of data value for responses among locations in NY State for the years 2006 and 2010 
 
 ```{r two_panel_plot}
 brfss_df %>% 
@@ -203,19 +203,19 @@ brfss_df %>%
     year %in% c("2006", "2010"),
     locationabbr %in% c("NY")
   ) %>% 
-  ggplot(aes(x = data_value, y = response, color = locationdesc)) + 
-  geom_point() + 
+  ggplot(aes(x = response, y = data_value)) + 
+  geom_boxplot() + 
   facet_grid(. ~ year) + 
   labs(
     title = "Data value distribution for responses in NY in 2006 and 2010",
-    x = "Data value",
-    y = "Response",
+    x = "Response",
+    y = "Data Value",
     caption = "Data from the BRFSS dataset"
   ) + 
   theme(legend.position = "right")
 ```
 
-** COMMENT ON THE RESULTS FOR THIS GRAPH** 
+Between 2006 and 2010, the distributions of data values for poor responses are pretty similar, though the 2010 distribution is slightly skewed in comparison to the 2006. The distributions of data values for fair responses are similar, though the 2010 distribution seems to have a wider range of data values. The distributions of data value for good responses are slightly similar with similar median values. The distributions of data values for very good responses are different between 2006 and 2010, with the 2010 distribution having a higher median data value. The distributions of data values for excellent responses are similar to each other with similar median values, though they are both slightly skewed. 
 
 
 ## PROBLEM 3 
