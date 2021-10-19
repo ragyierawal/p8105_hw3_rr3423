@@ -85,7 +85,7 @@ instacart %>%
   theme(axis.text.y = element_text(size = 7))
 ```
 
-This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". The "fresh vegetables" aisle has 150609 items ordered, the "fresh fruits" aisle has 150473 items ordered, and the "packaged vegetables fruits" aisle has 78493 items ordered.  
+This plot shows that the top 3 aisles that the most items are ordered from in descending order are: "fresh vegetables", "fresh fruits", and "packaged vegetables fruits". The "fresh vegetables" aisle has 150609 items ordered, the "fresh fruits" aisle has 150473 items ordered, and the "packaged vegetables fruits" aisle has 78493 items ordered. The butter aisle has the lowest number of items ordered. 
 
 ### Constructing a table of three most popular items in each of the aisles "baking ingredients", "dog food care", "packaged vegetables fruits"
 
@@ -211,7 +211,8 @@ brfss_df %>%
     x = "Data value",
     y = "Response",
     caption = "Data from the BRFSS dataset"
-  )
+  ) + 
+  theme(legend.position = "right")
 ```
 
 ** COMMENT ON THE RESULTS FOR THIS GRAPH** 
@@ -282,7 +283,7 @@ accel_df %>%
     caption = "**Table 3: Total activity variable for each day**")
 ```
 
-Based on this table, it appears that the total activity in minutes is **lowest on Saturdays** compared to the rest of the week. The total activity in minutes is **highest on Fridays** compared to the rest of the week. 
+Based on this table, it appears that the total activity in minutes is **lowest on Saturdays** compared to the rest of the week. The total activity in minutes is **highest on Fridays** compared to the rest of the week. The total activity for Wednesdays, Thursdays, and Fridays are higher than the other days of the week. 
 
 ### Creating a single-panel plot showing the 24-hour activity time course in minutes for each day 
 
@@ -302,4 +303,4 @@ accel_df %>%
     breaks = c(0, 240, 480, 720, 960, 1200, 1440))
 ```
 
-Based on this single-panel graph, it appears that the activity count is higher later in the day, since the activity count is higher in the later minutes of the day (around 1200 minutes), particularly during the weekdays (Monday - Friday). On the weekends (Saturday and Sunday), it appears that the activity count is higher in the middle of the day (aroun 720 minutes). 
+Based on this single-panel graph, it appears that the activity count is higher later in the day, since the activity count is higher in the later minutes of the day (around 1200 minutes), particularly during the weekdays (Monday - Friday). On the weekends (Saturday and Sunday), it appears that the activity count is higher in the middle of the day (around 720 minutes). 
