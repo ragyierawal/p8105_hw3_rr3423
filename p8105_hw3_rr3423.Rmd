@@ -64,7 +64,7 @@ instacart %>%
   arrange(desc(item_count))
 ```
 
-There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from are: "fresh vegetables" with 150609 items ordered, "fresh fruits" with 150473 items ordered, and "packaged vegetables fruits" with 78493 items ordered.. 
+There are 134 aisles in the instacart dataset. The top 3 aisles that the most items are ordered from are: "fresh vegetables" with 150609 items ordered, "fresh fruits" with 150473 items ordered, and "packaged vegetables fruits" with 78493 items ordered.
 
 ### Constructing a plot of the number of items ordered in each aisle (more than 10000 items ordered)
 
@@ -129,7 +129,8 @@ instacart %>%
   )
 ```
 
-Based on this table, it appears that **pink lady apples** are ordered earlier in the day on most days (Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday) when compared to **coffee ice cream**. However, on Fridays, **coffee ice cream** is ordered slightly earlier than **pink lady apples**. In addition, **coffee ice cream** is ordered earliest in the day on Fridays when compared to the rest of the week. **Pink lady apples** are ordered earliest in the day on Mondays. **Coffee ice cream** is ordered latest in the day on Tuesdays. **Pink lady apples** are ordered latest in the day on Wednesdays. 
+Based on this table, it appears that pink lady apples are ordered earlier in the day on most days (Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday) when compared to coffee ice cream. However, on Fridays, coffee ice cream is ordered slightly earlier than pink lady apples. In addition, coffee ice cream is ordered earliest in the day on Fridays when compared to the rest of the week. Pink lady apples are ordered earliest in the day on Mondays. Coffee ice cream is ordered latest in the day on Tuesdays. Pink lady apples are ordered latest in the day on Wednesdays. 
+
 
 ## PROBLEM 2 
 
@@ -174,7 +175,7 @@ brfss_df %>%
 
 In 2010, the following fourteen states were observed at 7 or more locations: CA, CO, FL, MA, MD, NC, NE, NJ, NY, OH, PA, SC, TX, WA. 
 
-### Constructing a dataset and spaghetti plot limited to Excellent responses which contains year, state, and a variable that averages the data_value across locations within a state.
+### Constructing a dataset and spaghetti plot limited to Excellent responses which contains year, state, and a variable that averages the data value across locations within a state.
 
 ```{r constructing_dataset, message = FALSE, warning = FALSE}
 # constructing dataset and making spaghetti plot
@@ -193,7 +194,7 @@ brfss_df %>%
   theme(legend.position = "right")
 ```
 
-Looking at this spaghetti plot, it seems that the average data_value across locations within a state seem to fluctuate from year to year in many states between 2002 and 2010. There is a lot of variability in this graph from year to year. 
+Looking at this spaghetti plot, it seems that the average data value across locations within a state seem to fluctuate from year to year in many states between 2002 and 2010. There is a lot of variability in this graph from year to year. 
 
 ### Making a two-panel plot showing the distribution of data value for responses among locations in NY State for the years 2006 and 2010 
 
@@ -212,15 +213,16 @@ brfss_df %>%
     y = "Data Value",
     caption = "Data from the BRFSS dataset"
   ) + 
-  theme(legend.position = "right")
+  theme(legend.position = "right",
+        axis.text.x = element_text(size = 7))
 ```
 
-Between 2006 and 2010, the distributions of data values for poor responses are pretty similar, though the 2010 distribution is slightly skewed in comparison to the 2006. The distributions of data values for fair responses are similar, though the 2010 distribution seems to have a wider range of data values. The distributions of data value for good responses are slightly similar with similar median values. The distributions of data values for very good responses are different between 2006 and 2010, with the 2010 distribution having a higher median data value. The distributions of data values for excellent responses are similar to each other with similar median values, though they are both slightly skewed. 
+Between 2006 and 2010, the distributions of data values for responses vary among the different types of responses. For some responses, such as poor response or excellent response, the distributions appear pretty similar. For other responses, the distributions are different. For example, the very good response distributions are different, with the median value for the 2010 distribution being higher than the median value for the 2006 distribution.
 
 
 ## PROBLEM 3 
 
-### Loading accelerometer csv dataset 
+### Loading and tidying accelerometer csv dataset 
 
 ```{r loading_accel_data}
 accel_df = 
@@ -283,7 +285,7 @@ accel_df %>%
     caption = "**Table 3: Total activity variable for each day**")
 ```
 
-Based on this table, it appears that the total activity in minutes is **lowest on Saturdays** compared to the rest of the week. The total activity in minutes is **highest on Fridays** compared to the rest of the week. The total activity for Wednesdays, Thursdays, and Fridays are higher than the other days of the week. 
+Based on this table, it appears that the total activity in minutes is lowest on Saturdays compared to the rest of the week. The total activity in minutes is highest on Fridays compared to the rest of the week. The total activity for Wednesdays, Thursdays, and Fridays are higher than the other days of the week. 
 
 ### Creating a single-panel plot showing the 24-hour activity time course in minutes for each day 
 
