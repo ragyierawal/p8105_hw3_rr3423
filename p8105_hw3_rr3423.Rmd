@@ -217,7 +217,7 @@ brfss_df %>%
         axis.text.x = element_text(size = 7))
 ```
 
-Between 2006 and 2010, the distributions of data values for responses vary among the different types of responses. For some responses, such as poor response or excellent response, the distributions appear pretty similar. For other responses, the distributions are different. For example, the very good response distributions are different, with the median value for the 2010 distribution being higher than the median value for the 2006 distribution.
+Between 2006 and 2010, the distributions of data values for responses appear relatively similar to each other. The distributions of the good, very good, and excellent responses have higher median data values than the distributions of the poor and fair responses. 
 
 
 ## PROBLEM 3 
