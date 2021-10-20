@@ -194,7 +194,7 @@ brfss_df %>%
   theme(legend.position = "right")
 ```
 
-Looking at this spaghetti plot, it seems that the average data value across locations within a state seem to fluctuate from year to year in many states between 2002 and 2010. There is a lot of variability in this graph from year to year. 
+Looking at this spaghetti plot, it seems that the average data value across locations within a state seem to fluctuate from year to year in many states between 2002 and 2010. There is a lot of variability in this graph from year to year. This graph is not very informative because it is difficult to distinguish between the different states. 
 
 ### Making a two-panel plot showing the distribution of data value for responses among locations in NY State for the years 2006 and 2010 
 
